@@ -21,6 +21,7 @@ The goals / steps of this project are the following:
 [image6]: ./images/image6.jpg 
 [image7]: ./images/image7.jpg 
 [image8]: ./images/image8.jpg 
+[image9]: ./images/image9.jpg 
 
 ### Writeup / README
 
@@ -53,6 +54,9 @@ Bar chart showing the distribution of testing images per class
 The maximum (label, count) from the training sample set (2, 2010)
 
 The minimum (label, count) from the training sample set (0, 180)
+
+Bar chart showing both testing and training data 
+![alt text][image9]
 
 ### Design and Test a Model Architecture
 
