@@ -20,7 +20,7 @@ The goals / steps of this project are the following:
 [image5]: ./images/image5.jpg 
 [image6]: ./images/image6.jpg 
 [image7]: ./images/image7.jpg 
-
+[image8]: ./images/image8.jpg 
 
 ### Writeup / README
 
@@ -86,6 +86,8 @@ My final model consisted of the following layers:
 | RELU					|												|
 | Softmax				|       									|
 
+The architecture graph from tensorboard
+![alt text][image8]
  
 #### 3.Training the model 
 
@@ -121,6 +123,12 @@ Here are German traffic signs that I found on the web:
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7]
 
+### Discussion on the quality of the images
+From the unseen images displayed above, we observe that :
+The sign is brighter than the background in all the images. Histogram equaliztion helps the brightness to be distributed across the image.
+The speed sign image 'Speed 20km/h' contains multiple shapes in the background and is a candidate for misclassification.
+'Speed 60km/h' image has a brighter background and also might not be classified properly.
+
 
 Here are the results of the prediction:
 
@@ -129,10 +137,15 @@ Here are the results of the prediction:
 |Go straight or left    		|Go straight or left									| 
 |Priority road     			| Priority road								|
 | Yield					| Yield											|
+| Speed limit (60km/h)      		| Priority road	|
 | Speed limit (20km/h)      		| Speed limit (30km/h)	|
-
 The model was able to correctly guess 3 of the 4 traffic signs, which gives an accuracy of 75%. 
 
+Model Performace : Unseen Images v/s Test Accuracy v/s Training Accuracy
+
+Accuracy on unseen images is 40% which is lower than the test accuracy which is 88%. This might be because of overfitting whereas test and training accuracy is almost same. To overcome overfitting problem we can introduce:
+Dropout layer. Two layers with the probability of 0.5 has been introduced after the fully connected layer.
+Early stopping and reducing the batch size
 For the first image, the model is relatively sure that this is a "Go straight or left" (probability of 0.99), and the image does contain a "Go straight or left" image. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
@@ -140,6 +153,7 @@ For the first image, the model is relatively sure that this is a "Go straight or
 | .998         			| Go straight or left 									| 
 | .999     				| Priority road 									|
 | 1					| Yield											|
+| .5      			| Priority road	 				|
 | .54      			| Speed limit (20km/h) 				 				|
 
 
